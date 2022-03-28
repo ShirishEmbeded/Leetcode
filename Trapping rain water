@@ -2,7 +2,7 @@
 
 int trap(int* height, int heightSize)
 {
-   int node[heightSize];
+   uint node[heightSize], max=height[0];
     for (int i=0; i<heightSize; i++)
     {
         node[i]= height[i];
@@ -10,7 +10,9 @@ int trap(int* height, int heightSize)
     
     for (int i=0; i<heightSize; i++)
     {
-        printf("%d\n", node[i]);
+       if (max<node[i])
+           max=node[i];
     }
+    printf("%d\n", max);
     return 0;
 }
