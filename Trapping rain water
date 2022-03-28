@@ -1,0 +1,16 @@
+
+
+int trap(int* height, int heightSize)
+{
+   int node[heightSize];
+    for (int i=0; i<heightSize; i++)
+    {
+        node[i]= height[i];
+    }
+    
+    for (int i=0; i<heightSize; i++)
+    {
+        printf("%d\n", node[i]);
+    }
+    return 0;
+}
