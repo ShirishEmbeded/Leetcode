@@ -1,0 +1,27 @@
+int trap(int* height, int heightSize)
+{
+    int n=heightSize;
+    int trappedWater = 0;
+    int leftMaxHeight = 0, rightMaxHeight = 0;
+    int left = 0, right = n - 1;
+    while (left <= right)
+    {
+        if (height[left] < height[right])
+        {
+            if (height[left] > leftMaxHeight)
+                leftMaxHeight = height[left];
+            else
+                trappedWater = trappedWater + leftMaxHeight - height[left];
+            left = left + 1;
+        }
+        else
+        {
+            if (height[right] > rightMaxHeight)
+                rightMaxHeight = height[right];
+            else
+                trappedWater = trappedWater + rightMaxHeight - height[right];                                                            
+            right = right - 1;
+        }
+    }
+    return trappedWater;
+}
