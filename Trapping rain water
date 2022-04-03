@@ -1,56 +1,30 @@
-
 int trap(int* height, int heightSize)
 {
-   uint count=0,c=0, node[heightSize], max=height[0],flag=0,slag=0;
+   uint count=0,c=0, node[heightSize], max=height[0],flag=0,slag=0, fc=0;
     for (int i=0; i<heightSize; i++)
     {
-        node[i]= height[i];
+       if (max<height[i])
+           max=height[i];
     }
     
-    for (int i=0; i<heightSize; i++)
-    {
-       if (max<node[i])
-           max=node[i];
-    }
     for(int j=0; j<max; j++)
     {
-       for (int i=0; i<heightSize; i++)
-       {
-           if (height[i]>j)
+           for (int i=0; i<heightSize; i++)
            {
-               node[i]=1;
-           }
-           else
-           {
-               node[i]=0;
-           }
-       }
-     
-        
-    for (int i=0; i<heightSize; i++)
-    {
-        printf("%d ",node[i]);
-        if (node[i]==1 && flag==0)
-        {
-            flag=1;
-            c+=count;
-           // flag=0;
-            count=0;
-        }
-        
-        if (flag==1)
-        {
-            if(node[i]==0)
-            {
-                count++;    flag=0;
-            }
-        
-        }
-        
+               if (height[i]>j)
+               {
+                   c=c+count; 
+                   flag=1; count=0;
+               }
+               else if(flag==1)
+               {
+                    count++;// flag=0;
+               }
+        } 
+        fc=fc+c;
+        c=0;
+        count=0; 
+        flag=0;
     }
-        printf("c-%d\n",c);
-    }
-    
-    return 0;
+    return fc;
 }
-
